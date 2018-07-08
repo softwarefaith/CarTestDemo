@@ -36,8 +36,9 @@
 
 @property (nonatomic, retain)NSMutableArray *cricleMarks;
 
-
 @property (nonatomic, assign) NSInteger count;
+
+@property (nonatomic, strong) UIImageView *triangle;
 
 @end
 
@@ -67,6 +68,10 @@
         _lineDone.backgroundColor = _config.lineSuccessColor;
         [self addSubview:_lineDone];
         
+        
+        [self addSubview:self.triangle];
+        
+        
         for (int i = 0; i < _count ; i++)
         {
             UIButton *circleButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -89,6 +94,7 @@
             [self.cricleMarks addObject:circleButton];
         }
 
+      //  [self markLocation:_stepIndex];
     }
     return self;
 }
@@ -98,6 +104,26 @@
 - (void)clickAction:(UIButton *)sender {
     
     self.buttonClick(sender, sender.tag - 100);
+}
+
+
+- (void)markLocation:(NSInteger)index {
+    
+    UIButton * circle = [self.cricleMarks objectAtIndex:index];
+    CGPoint center = circle.center;
+    
+    CGPoint triangleCenter = _triangle.center;
+    triangleCenter.x =center.x;
+   
+    _triangle.hidden = NO;
+    _triangle.center = triangleCenter;
+    
+//    CGRect  triangleFrame = _triangle.frame;
+//    triangleFrame.origin.x = center.x;
+//
+//    _triangle.hidden = NO;
+//    _triangle.frame = triangleFrame;
+
 }
 
 #pragma mark - method
@@ -119,7 +145,7 @@
             cricle.center = CGPointMake(i * perWidth + startX, _lineUndo.center.y);
         }
     }
-    
+    [self markLocation:_stepIndex];
     self.stepIndex = _stepIndex;
 }
 
@@ -169,5 +195,15 @@
     }
 }
 
+- (UIImageView *)triangle {
+    if (_triangle == nil) {
+        _triangle = [[UIImageView alloc] init];
+        _triangle.frame = CGRectMake(0, CGRectGetHeight(self.frame) - 5, 9, 5);
+        _triangle.backgroundColor = [UIColor greenColor];
+        _triangle.hidden = YES;
+            }
+    
+    return _triangle;
+}
 
 @end
