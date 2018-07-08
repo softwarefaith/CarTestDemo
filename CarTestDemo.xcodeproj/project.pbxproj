@@ -12,6 +12,8 @@
 		2E618CC120F1C94C00C9E555 /* MNSegmentViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E618CBF20F1C94C00C9E555 /* MNSegmentViewCell.m */; };
 		2E618CC420F1CEFA00C9E555 /* UIScrollView+MNPageExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E618CC320F1CEFA00C9E555 /* UIScrollView+MNPageExtend.m */; };
 		2E618CC720F1D6D600C9E555 /* UIViewController+MNPageExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E618CC620F1D6D600C9E555 /* UIViewController+MNPageExtend.m */; };
+		2E618CCD20F1F7D200C9E555 /* MNTransparentNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E618CCA20F1F7D100C9E555 /* MNTransparentNavigationBar.m */; };
+		2E618CCE20F1F7D200C9E555 /* MNTransparentBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E618CCB20F1F7D100C9E555 /* MNTransparentBarButtonItem.m */; };
 		2E72F57120F1863200892AF4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E72F57020F1863200892AF4 /* AppDelegate.m */; };
 		2E72F57720F1863200892AF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E72F57520F1863200892AF4 /* Main.storyboard */; };
 		2E72F57920F1863300892AF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E72F57820F1863300892AF4 /* Assets.xcassets */; };
@@ -60,6 +62,10 @@
 		2E618CC320F1CEFA00C9E555 /* UIScrollView+MNPageExtend.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MNPageExtend.m"; sourceTree = "<group>"; };
 		2E618CC520F1D6D600C9E555 /* UIViewController+MNPageExtend.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MNPageExtend.h"; sourceTree = "<group>"; };
 		2E618CC620F1D6D600C9E555 /* UIViewController+MNPageExtend.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MNPageExtend.m"; sourceTree = "<group>"; };
+		2E618CC920F1F7D100C9E555 /* MNTransparentBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNTransparentBarButtonItem.h; sourceTree = "<group>"; };
+		2E618CCA20F1F7D100C9E555 /* MNTransparentNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNTransparentNavigationBar.m; sourceTree = "<group>"; };
+		2E618CCB20F1F7D100C9E555 /* MNTransparentBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNTransparentBarButtonItem.m; sourceTree = "<group>"; };
+		2E618CCC20F1F7D100C9E555 /* MNTransparentNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNTransparentNavigationBar.h; sourceTree = "<group>"; };
 		2E72F56C20F1863200892AF4 /* CarTestDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarTestDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E72F56F20F1863200892AF4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2E72F57020F1863200892AF4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -122,7 +128,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2E618CBB20F1C94C00C9E555 /* MFSegmentView */ = {
+		2E618CBB20F1C94C00C9E555 /* MNSegmentView */ = {
 			isa = PBXGroup;
 			children = (
 				2E618CBC20F1C94C00C9E555 /* MNSegmentView.h */,
@@ -130,7 +136,18 @@
 				2E618CBD20F1C94C00C9E555 /* MNSegmentViewCell.h */,
 				2E618CBF20F1C94C00C9E555 /* MNSegmentViewCell.m */,
 			);
-			path = MFSegmentView;
+			path = MNSegmentView;
+			sourceTree = "<group>";
+		};
+		2E618CC820F1F7D100C9E555 /* MNTransparentNavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				2E618CC920F1F7D100C9E555 /* MNTransparentBarButtonItem.h */,
+				2E618CCC20F1F7D100C9E555 /* MNTransparentNavigationBar.h */,
+				2E618CCA20F1F7D100C9E555 /* MNTransparentNavigationBar.m */,
+				2E618CCB20F1F7D100C9E555 /* MNTransparentBarButtonItem.m */,
+			);
+			path = MNTransparentNavigationBar;
 			sourceTree = "<group>";
 		};
 		2E72F56320F1863200892AF4 = {
@@ -193,7 +210,8 @@
 			children = (
 				2E72F5D620F1A67F00892AF4 /* images */,
 				2E72F5CF20F1A56800892AF4 /* NestTableView */,
-				2E618CBB20F1C94C00C9E555 /* MFSegmentView */,
+				2E618CBB20F1C94C00C9E555 /* MNSegmentView */,
+				2E618CC820F1F7D100C9E555 /* MNTransparentNavigationBar */,
 				2E72F5C120F18AEF00892AF4 /* MNPageScrollView.h */,
 				2E72F5C220F18AEF00892AF4 /* MNPageScrollView.m */,
 				2E618CC520F1D6D600C9E555 /* UIViewController+MNPageExtend.h */,
@@ -373,12 +391,14 @@
 				2E72F5DB20F1B05100892AF4 /* MNBusinessAuditViewController.m in Sources */,
 				2E72F57F20F1863400892AF4 /* main.m in Sources */,
 				2E72F5DE20F1B28200892AF4 /* MNSubPageViewController.m in Sources */,
+				2E618CCD20F1F7D200C9E555 /* MNTransparentNavigationBar.m in Sources */,
 				2E618CBA20F1C7AA00C9E555 /* MNPageView.m in Sources */,
 				2E72F5D520F1A59A00892AF4 /* MNAllowGestureEventPassTableView.m in Sources */,
 				2E72F5B720F186B700892AF4 /* MNPageViewController.m in Sources */,
 				2E72F5C320F18AEF00892AF4 /* MNPageScrollView.m in Sources */,
 				2E618CC420F1CEFA00C9E555 /* UIScrollView+MNPageExtend.m in Sources */,
 				2E618CC720F1D6D600C9E555 /* UIViewController+MNPageExtend.m in Sources */,
+				2E618CCE20F1F7D200C9E555 /* MNTransparentBarButtonItem.m in Sources */,
 				2E618CC020F1C94C00C9E555 /* MNSegmentView.m in Sources */,
 				2E72F57120F1863200892AF4 /* AppDelegate.m in Sources */,
 				2E72F5ED20F1BAB900892AF4 /* VCThree.m in Sources */,

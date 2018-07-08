@@ -10,7 +10,7 @@
 
 #import "MNNestTableView.h"
 #import "UIViewController+MNPageExtend.h"
-
+#import "MNTransparentNavigationBar.h"
 @interface ArtNavView : UIView
 
 @property (nonatomic, strong) UIButton *leftBut;
@@ -52,7 +52,7 @@
 
 @interface MNPageViewController ()<MNNestTableViewDelegate, MNNestTableViewDataSource>
 
-@property (nonatomic, strong) ArtNavView *navView;
+@property (nonatomic, strong) MNTransparentNavigationBar *navView;
 
 //头
 @property (nonatomic, strong) UIView *headerView;
@@ -99,9 +99,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.edgesForExtendedLayout = UIRectEdgeTop;
-    //[self setupNavgationBar];
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    [self setupNavgationBar];
     [self setupSubViews];
+    [self.view bringSubviewToFront:self.navView];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receviveScroll:) name:@"com.nestTableView.scroll" object:nil];
     
@@ -144,16 +145,19 @@
      * 在代理 - (void)pagingView:(HHHorizontalPagingView *)pagingView scrollTopOffset:(CGFloat)offset
      *做出对应处理来改变 背景色透明度
      */
-    self.navView = [[ArtNavView alloc] init];
+    self.navView = [[MNTransparentNavigationBar alloc] init];
     CGSize size = [UIScreen mainScreen].bounds.size;
     self.navView.frame = CGRectMake(0, 0, size.width, 84);
     [self.view addSubview:self.navView];
     [self.navView.leftBut addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.navView];
 }
 
 - (void)setupSubViews {
     _nestTableView = [[MNNestTableView alloc] initWithFrame:self.view.bounds];
     _nestTableView.headerView = self.headerView;
+    
+    
    
   //  _nestTableView.allowGestureEventPassViews = _viewList;
     _nestTableView.delegate = self;
@@ -365,19 +369,21 @@
 - (void)nestTableViewDidScroll:(UIScrollView *)scrollView {
     
     // 监听容器的滚动，来设置NavigationBar的透明度
-//    if (_headerView) {
-//        CGFloat offset = scrollView.contentOffset.y;
-//        CGFloat canScrollHeight = [_nestTableView heightForContainerCanScroll];
-//        MFTransparentNavigationBar *bar = (MFTransparentNavigationBar *)self.navigationController.navigationBar;
-//        if ([bar isKindOfClass:[MFTransparentNavigationBar class]]) {
-//            [bar setBackgroundAlpha:offset / canScrollHeight];
-//        }
-//    }
+    if (_headerView) {
+        CGFloat offset = scrollView.contentOffset.y;
+        CGFloat canScrollHeight = [_nestTableView heightForContainerCanScroll];
+        MNTransparentNavigationBar *bar = self.navView;
+        if ([bar isKindOfClass:[MNTransparentNavigationBar class]]) {
+            [bar setBackgroundAlpha:offset / canScrollHeight];
+        }
+    }
 }
 
 - (CGFloat)nestTableViewContentInsetTop:(MNNestTableView *)nestTableView {
     
     // 因为这里navigationBar.translucent == YES，所以实现这个方法，返回下面的值
+    
+    return 20;
     
     if (IS_IPHONE_X) {
         return 88;
