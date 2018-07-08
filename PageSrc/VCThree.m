@@ -48,7 +48,7 @@
     // self.view.backgroundColor = [UIColor orangeColor];
     self.tableViews = [NSMutableArray arrayWithCapacity:3];
 
-    for (int i = 0; i < 3; ++i) {
+    for (int i = 0; i < 4; ++i) {
         UITableView *tableView = [[UITableView alloc] init];
         tableView.delegate = self;
         tableView.dataSource = self;
@@ -82,11 +82,12 @@
         case 2:{
             return 40;
         }
+        
             
         default:
             break;
     }
-    return 0;
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

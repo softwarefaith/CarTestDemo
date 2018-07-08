@@ -36,7 +36,7 @@
     
     UITableView *tableView = [self.tableViews objectAtIndex:index];
     tableView.frame = frame;
-    [tableView reloadData];
+   // [tableView reloadData];
     return tableView;
 }
 
