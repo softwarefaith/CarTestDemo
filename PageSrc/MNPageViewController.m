@@ -11,44 +11,7 @@
 #import "MNNestTableView.h"
 #import "UIViewController+MNPageExtend.h"
 #import "MNTransparentNavigationBar.h"
-@interface ArtNavView : UIView
-
-@property (nonatomic, strong) UIButton *leftBut;
-
-@end
-
-@implementation ArtNavView
-
-- (instancetype)initWithFrame:(CGRect)frame {
-    
-    if (self = [super initWithFrame:frame]) {
-        [self configUI];
-    }
-    return self;
-}
-
-- (void) configUI {
-    /*
-     * 只是做一个简单示例，要加分割线或其它变化，自行扩展即可
-     */
-    self.backgroundColor = [UIColor colorWithWhite:1 alpha: 0];
-    UIButton *but = [UIButton buttonWithType:UIButtonTypeSystem];
-    but.frame = CGRectMake(0, 22, 44, 44);
-    UIImage *buttonimage = [UIImage imageNamed:@"barbuttonicon_back"];
-    [but setImage:buttonimage forState:UIControlStateNormal];
-    but.tintColor = [UIColor colorWithWhite:0 alpha: 1];
-    self.leftBut = but;
-    [self addSubview:but];
-}
-
-- (void)changeAlpha:(CGFloat)alpha {
-    
-    self.backgroundColor = [UIColor colorWithWhite:1 alpha: alpha];
-    self.leftBut.tintColor = [UIColor colorWithWhite:(1 - alpha) alpha:1];
-}
-
-@end
-
+#import "MNStepView.h"
 
 @interface MNPageViewController ()<MNNestTableViewDelegate, MNNestTableViewDataSource>
 
@@ -57,10 +20,13 @@
 //头
 @property (nonatomic, strong) UIView *headerView;
 
+@property (nonatomic, assign, readwrite) NSInteger pageIndex;
+
+
 @property (nonatomic, strong) MNNestTableView *nestTableView;
 /// 当前显示的页面
 @property (nonatomic, strong) UIScrollView *currentScrollView;
-@property (nonatomic, strong) UIView *menuView;
+@property (nonatomic, strong) MNStepView *menuView;
 
 @property (nonatomic, strong) UIViewController *currentViewController;
 
@@ -106,6 +72,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receviveScroll:) name:@"com.nestTableView.scroll" object:nil];
     
+    self.pageIndex = self.currentProgress;
     [self adjustDisplayCopntentViewByPageIndex];
 }
 
@@ -157,13 +124,21 @@
     _nestTableView = [[MNNestTableView alloc] initWithFrame:self.view.bounds];
     _nestTableView.headerView = self.headerView;
     
-    
-   
   //  _nestTableView.allowGestureEventPassViews = _viewList;
     _nestTableView.delegate = self;
     _nestTableView.dataSource = self;
-    
     [self.view addSubview:_nestTableView];
+    
+    
+    self.menuView = [[MNStepView alloc] initWithFrame:CGRectMake(0, 114, CGRectGetWidth(_headerView.frame), 56) config:nil];
+    
+    __weak typeof(self) weakSelf = self;
+    self.menuView.buttonClick = ^(UIButton *button, NSInteger index) {
+        
+        [weakSelf buttonAction:index];
+    };
+    
+    [_headerView addSubview:self.menuView];
 }
 
 - (void)updateDisplayView:(UIView *)dispalyView {
@@ -271,6 +246,13 @@
 
 - (void)back {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)buttonAction:(NSInteger)index {
+    
+    //TODO: 先判断可不可以点
+    
+    [self setSelectedPageIndex:index];
 }
 
 #pragma mark - Pubic
@@ -403,35 +385,14 @@
         // 并将header的subview向上偏移，遮挡navigationBar透明后的空白
         CGFloat offsetTop = [self nestTableViewContentInsetTop:_nestTableView];
     
-        _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, offsetTop, CGRectGetWidth(self.view.frame), 244)];
+        _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, offsetTop, CGRectGetWidth(self.view.frame), 170)];
         
         _headerView.backgroundColor = [UIColor redColor];
-        
-        self.menuView = [[UIView alloc] initWithFrame:CGRectMake(0, 199, CGRectGetWidth(_headerView.frame), 44)];
-        self.menuView.backgroundColor = [UIColor greenColor];
-        for (int i = 0 ; i < 3; i ++ ) {
-            
-            UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-            button.frame = CGRectMake(i * (CGRectGetWidth(_headerView.frame) / 3) , 0, CGRectGetWidth(_headerView.frame) / 3, 44);
-            [button setTitle:[NSString stringWithFormat:@"index-%d",i] forState:UIControlStateNormal];
-            [button addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
-            button.tag = 100 + i;
-            [self.menuView addSubview:button];
-        }
-        [_headerView addSubview:self.menuView];
-        
     }
     
     return _headerView;
 }
 
-- (void)buttonAction:(UIButton *)button {
-    
-    NSInteger  index  = button.tag - 100;
-    [self setSelectedPageIndex:index];
-    
-    
-}
 
 /*
 #pragma mark - Navigation

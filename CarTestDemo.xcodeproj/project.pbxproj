@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E2D752E20F243EB00484C26 /* MNStepView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E2D752D20F243EB00484C26 /* MNStepView.m */; };
 		2E618CBA20F1C7AA00C9E555 /* MNPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E618CB920F1C7AA00C9E555 /* MNPageView.m */; };
 		2E618CC020F1C94C00C9E555 /* MNSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E618CBE20F1C94C00C9E555 /* MNSegmentView.m */; };
 		2E618CC120F1C94C00C9E555 /* MNSegmentViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E618CBF20F1C94C00C9E555 /* MNSegmentViewCell.m */; };
@@ -52,6 +53,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2E2D752C20F243EB00484C26 /* MNStepView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNStepView.h; sourceTree = "<group>"; };
+		2E2D752D20F243EB00484C26 /* MNStepView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNStepView.m; sourceTree = "<group>"; };
 		2E618CB820F1C7A900C9E555 /* MNPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNPageView.h; sourceTree = "<group>"; };
 		2E618CB920F1C7AA00C9E555 /* MNPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MNPageView.m; sourceTree = "<group>"; };
 		2E618CBC20F1C94C00C9E555 /* MNSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MNSegmentView.h; sourceTree = "<group>"; };
@@ -128,6 +131,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E2D752B20F243EB00484C26 /* MNStepView */ = {
+			isa = PBXGroup;
+			children = (
+				2E2D752C20F243EB00484C26 /* MNStepView.h */,
+				2E2D752D20F243EB00484C26 /* MNStepView.m */,
+			);
+			path = MNStepView;
+			sourceTree = "<group>";
+		};
 		2E618CBB20F1C94C00C9E555 /* MNSegmentView */ = {
 			isa = PBXGroup;
 			children = (
@@ -212,6 +224,7 @@
 				2E72F5CF20F1A56800892AF4 /* NestTableView */,
 				2E618CBB20F1C94C00C9E555 /* MNSegmentView */,
 				2E618CC820F1F7D100C9E555 /* MNTransparentNavigationBar */,
+				2E2D752B20F243EB00484C26 /* MNStepView */,
 				2E72F5C120F18AEF00892AF4 /* MNPageScrollView.h */,
 				2E72F5C220F18AEF00892AF4 /* MNPageScrollView.m */,
 				2E618CC520F1D6D600C9E555 /* UIViewController+MNPageExtend.h */,
@@ -398,6 +411,7 @@
 				2E72F5C320F18AEF00892AF4 /* MNPageScrollView.m in Sources */,
 				2E618CC420F1CEFA00C9E555 /* UIScrollView+MNPageExtend.m in Sources */,
 				2E618CC720F1D6D600C9E555 /* UIViewController+MNPageExtend.m in Sources */,
+				2E2D752E20F243EB00484C26 /* MNStepView.m in Sources */,
 				2E618CCE20F1F7D200C9E555 /* MNTransparentBarButtonItem.m in Sources */,
 				2E618CC020F1C94C00C9E555 /* MNSegmentView.m in Sources */,
 				2E72F57120F1863200892AF4 /* AppDelegate.m in Sources */,

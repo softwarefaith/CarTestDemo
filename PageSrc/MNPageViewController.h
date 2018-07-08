@@ -37,8 +37,11 @@
 @property (nonatomic,weak) id <MNPageViewControllerDataSource> dataSource;
 
 
+//代表 当前审核的进度
+@property (nonatomic, assign) NSInteger currentProgress;
+
 // 当前页面index
-@property (nonatomic, assign) NSInteger pageIndex;
+@property (nonatomic, assign, readonly) NSInteger pageIndex;
 
 /**
  选中页码
