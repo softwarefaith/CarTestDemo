@@ -13,8 +13,6 @@
 #import "MNSegmentView.h"
 @interface MNSubPageViewController ()<MNPageViewDelegate,MNPageViewDataSource,MNSegmentViewDelegate>
 
-
-
 @property (nonatomic,strong) MNSegmentView *segmentView;
 
 @property (nonatomic, strong) MNPageView *contentView;
@@ -102,6 +100,12 @@
 }
 
 #pragma mark - MFSegmentViewDelegate
+
+
+- (UIView *)footerView {
+    
+    return nil;
+}
 
 - (void)segmentView:(MNSegmentView *)segmentView didScrollToIndex:(NSUInteger)index {
     

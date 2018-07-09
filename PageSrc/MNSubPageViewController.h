@@ -12,11 +12,15 @@
 
 
 //子类需要覆盖以下方法
-//
+
+
+
+- (UIView *)footerView;
+
 -(NSArray <NSString *> *)subPageItemsTagList;
 
-- (NSInteger)numbersOfTabeView;
+- (NSInteger)numbersOfScrollView;
 
-- (UITableView *)tableViewsAtIndex:(NSInteger)index frame:(CGRect)frame;
+- (__kindof UIScrollView *)ScrollViewAtIndex:(NSInteger)index frame:(CGRect)frame;
 
 @end
